@@ -5417,6 +5417,7 @@ dependencies = [
  "foundry-compilers",
  "foundry-config",
  "heck",
+ "rayon",
  "solar-compiler",
  "solar-lint",
  "thiserror 2.0.20",

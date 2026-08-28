@@ -12,6 +12,7 @@ use foundry_config::{
     DenyLevel,
     lint::{LintSpecificConfig, Severity},
 };
+use rayon::prelude::*;
 use solar::{
     ast::{self as ast},
     interface::{
@@ -340,7 +341,7 @@ impl<'a> Linter for SolidityLinter<'a> {
 
             let mut suite = self.to_suite();
             let mut sources = targets
-                .iter()
+                .par_iter()
                 .map(|path| {
                     let (_, source) =
                         gcx.get_ast_source(path).expect("lint target was validated above");
